@@ -16,4 +16,8 @@ classifIdosos x = [(fst z,snd z,faixaIdoso(snd z)) | z <- x ]
 strColor :: (Int,Int,Int) -> String
 strColor x = "rgb" ++ show x
 
---genCircs :: Int -> (Int,Int) -> Int -> [(Int,Int,Int)]
+genCircs :: Int -> (Int,Int) -> Int -> [(Int,Int,Int)]
+genCircs n (cx,cy) r = take n [(x,cy,r) | x <- (iterate (+2) cx)]
+
+genReds :: Int -> [(Int,Int,Int)]
+genReds x = take x [(y,0,0) | y <- [2,2 + truncate (fromIntegral x*1.33)..], y < 255]
